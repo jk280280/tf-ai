@@ -2,8 +2,8 @@
 
 terraform {
   backend "s3" {
-    bucket = "pipelinebackend"
-    key    = "remote.tfstate"
+    bucket = "iaac-backend-uat"
+    key    = "oseremote.tfstate"
     region = "us-east-1"
   }
 }
