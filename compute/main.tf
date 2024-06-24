@@ -17,7 +17,7 @@ data "aws_ami" "linux" {
 }
 
 resource "aws_launch_template" "web" {
-  name_prefix            = "web"
+  name_prefix            = "weh-server1"
   image_id               = data.aws_ami.linux.id
   instance_type          = var.web_instance_type
   vpc_security_group_ids = [var.web_sg]
@@ -31,9 +31,9 @@ resource "aws_launch_template" "web" {
 resource "aws_autoscaling_group" "web" {
   name                = "web"
   vpc_zone_identifier = tolist(var.public_subnet)
-  min_size            = 2
-  max_size            = 3
-  desired_capacity    = 2
+  min_size            = 1
+  max_size            = 2
+  desired_capacity    = 1
 
   launch_template {
     id      = aws_launch_template.web.id
